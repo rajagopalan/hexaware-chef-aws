@@ -2,13 +2,10 @@ bash -c '
 <%= "export http_proxy=\"#{knife_config[:bootstrap_proxy]}\"" if knife_config[:bootstrap_proxy] -%>
 
 if [ ! -f /usr/bin/chef-client ]; then
-  aptitude update
-  aptitude install -y ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 build-essential libopenssl-ruby1.9.1 libssl-dev wget zlib1g-dev
+  apt-get update
+  apt-get install chef
 fi
 
-gem update --no-rdoc --no-ri
-gem install ohai --no-rdoc --no-ri --verbose
-gem install chef --no-rdoc --no-ri --verbose 
 
 mkdir -p /etc/chef
 
